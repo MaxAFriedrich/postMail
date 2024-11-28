@@ -74,6 +74,8 @@ def build_content(form_data):
 
 
 def send_email(email, subject, content, reply_to=None):
+    print(f"Sending email to {email} with subject: {subject}")
+    return
     # Create the email message
     msg = MIMEMultipart()
     msg['From'] = config.sender_email
@@ -120,6 +122,7 @@ def turnstile_validation(token, ip):
     }
     response = requests.post(url, json=payload, headers=headers)
     outcome = response.json()
+    print(outcome)
     return outcome.get('success', False)
 
 
@@ -138,6 +141,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
             cf_ip = self.headers.get('CF-Connecting-IP', '')
             token = form_data.get('cf-turnstile-response', [''])[0]
+            print(f"Received POST request from {cf_ip} with token {token[:5]}")
 
             if not turnstile_validation(token, cf_ip):
                 print(f"Turnstile validation failed for {cf_ip}")
