@@ -2,11 +2,11 @@ services:
 
   app:
     build: .
-    restart: always
+    restart: on-failure
 
   caddy:
     image: caddy
-    restart: always
+    restart: on-failure
     ports:
       - "80:80"
       - "443:443"

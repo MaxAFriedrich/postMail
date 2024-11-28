@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["poetry", "run", "python", "server.py"]
+CMD ["poetry", "run", "python", "-u", "server.py"]

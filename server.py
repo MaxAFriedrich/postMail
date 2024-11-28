@@ -147,6 +147,7 @@ class RequestHandler(BaseHTTPRequestHandler):
                 print(f"Turnstile validation failed for {cf_ip}")
                 self.send_response(302)
                 self.send_header('Location', point.error_url)
+                return
 
             email = "".join(form_data.get('email', ['']))
             content = build_content(form_data)
