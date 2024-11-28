@@ -75,7 +75,6 @@ def build_content(form_data):
 
 def send_email(email, subject, content, reply_to=None):
     print(f"Sending email to {email} with subject: {subject}")
-    return
     # Create the email message
     msg = MIMEMultipart()
     msg['From'] = config.sender_email
